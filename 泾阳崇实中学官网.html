@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泾阳崇实中学 - 百年树人 崇实求真</title>
+    <!-- Font Awesome -->
+    <script src="https://image.uc.cn/s/uae/g/3n/mos-production/fontawesome-free-7.1.0-web/js/all.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- TailwindCSS -->
+    <script src="https://image.uc.cn/s/uae/g/3n/mos-production/0915/3.4.17.js"></script>
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0d47a1',
+                        secondary: '#ff9800',
+                        accent: '#2196f3',
+                        glass: 'rgba(255, 255, 255, 0.1)',
+                        darkglass: 'rgba(13, 71, 161, 0.8)'
+                    },
+                    fontFamily: {
+                        'sans': ['Noto Sans SC', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s infinite'
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            overflow-x: hidden;
+        }
+        
+        /* 玻璃态卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-card-dark {
+            background: rgba(13, 71, 161, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 时间线样式 */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ff9800;
+            border: 4px solid #0d47a1;
+        }
+        
+        .timeline-connector {
+            position: absolute;
+            left: -21px;
+            top: 20px;
+            bottom: -40px;
+            width: 2px;
+            background: #0d47a1;
+        }
+        
+        /* 轮播图样式 */
+        .carousel-slide {
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        .carousel-slide:not(.active) {
+            opacity: 0;
+            z-index: 0;
+        }
+        
+        /* 论坛帖子样式 */
+        .forum-post {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .forum-post:hover {
+            border-left-color: #ff9800;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* 背景装饰层 */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .timeline-item::before {
+                left: -20px;
+            }
+            
+            .timeline-connector {
+                left: -11px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- 背景装饰层 -->
+    <div class="bg-decoration">
+        <div class="absolute top-1/4 left-10 w-64 h-64 rounded-full bg-blue-200 opacity-10 blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-10 w-80 h-80 rounded-full bg-orange-200 opacity-10 blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-purple-100 opacity-5 blur-3xl"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 w-full z-50 py-4 px-6 glass-card-dark animate-fade-in">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
+                    <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                </div>
+                <a href="#home" class="text-white text-2xl font-bold font-serif">泾阳崇实中学</a>
+            </div>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-secondary transition-colors duration-300 font-medium">首页</a>
+                <a href="#history" class="text-white hover:text-secondary transition-colors duration-300 font-medium">学校历史</a>
+                <a href="#courses" class="text-white hover:text-secondary transition-colors duration-300 font-medium">课程体系</a>
+                <a href="#teachers" class="text-white hover:text-secondary transition-colors duration-300 font-medium">师资团队</a>
+                <a href="#forum" class="text-white hover:text-secondary transition-colors duration-300 font-medium">校园论坛</a>
+                <a href="#news" class="text-white hover:text-secondary transition-colors duration-300 font-medium">新闻公告</a>
+                <a href="#contact" class="text-white hover:text-secondary transition-colors duration-300 font-medium">联系我们</a>
+            </div>
+            
+            <!-- 移动端汉堡菜单按钮 -->
+            <button id="mobile-menu-button" class="md:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 px-4 glass-card rounded-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-secondary py-2 border-b border-white/20">首页</a>
+                <a href="#history" class="text-white hover:text-secondary py-2 border-b border-white/20">学校历史</a>
+                <a href="#courses" class="text-white hover:text-secondary py-2 border-b border-white/20">课程体系</a>
+                <a href="#teachers" class="text-white hover:text-secondary py-2 border-b border-white/20">师资团队</a>
+                <a href="#forum" class="text-white hover:text-secondary py-2 border-b border-white/20">校园论坛</a>
+                <a href="#news" class="text-white hover:text-secondary py-2 border-b border-white/20">新闻公告</a>
+                <a href="#contact" class="text-white hover:text-secondary py-2">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 沉浸式轮播图 -->
+    <section id="home" class="relative h-screen overflow-hidden">
+        <!-- 轮播图容器 -->
+        <div id="carousel" class="relative h-full">
+            <!-- 轮播图1 -->
+            <div class="carousel-slide active absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.5)), url('https://agent.qianwen.com/mos/1b7e98c688a44ec988f6e7a9c5f6fcdb/125a41f0769f98dcf132275d048d3904')">
+                    <div class="container mx-auto h-full flex items-center">
+                        <div class="text-white max-w-2xl glass-card p-8 rounded-2xl">
+                            <h1 class="text-5xl font-bold mb-4 font-serif animate-slide-up">泾阳崇实中学</h1>
+                            <p class="text-xl mb-6 animate-slide-up" style="animation-delay: 0.2s">百年树人 · 崇实求真 · 追求卓越</p>
+                            <p class="text-lg animate-slide-up" style="animation-delay: 0.4s">创办于1928年，秉承"崇实、求是、创新、致远"的校训，致力于培养德智体美劳全面发展的社会主义建设者和接班人。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播图2 -->
+            <div class="carousel-slide absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.5)), url('https://agent.qianwen.com/mos/1b7e98c688a44ec988f6e7a9c5f6fcdb/6c5e1c17a8eba0338cf0057854be62cd')">
+                    <div class="container mx-auto h-full flex items-center">
+                        <div class="text-white max-w-2xl glass-card p-8 rounded-2xl">
+                            <h2 class="text-4xl font-bold mb-4 font-serif">智慧课堂</h2>
+                            <p class="text-xl mb-6">互动式教学，激发学生潜能</p>
+                            <p class="text-lg">采用现代化教育技术，打造高效、互动、个性化的学习环境，关注每一位学生的成长与发展。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播图3 -->
+            <div class="carousel-slide absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.5)), url('https://agent.qianwen.com/mos/1b7e98c688a44ec988f6e7a9c5f6fcdb/537ecee4d6d07623d6bf033d2566288a')">
+                    <div class="container mx-auto h-full flex items-center">
+                        <div class="text-white max-w-2xl glass-card p-8 rounded-2xl">
+                            <h2 class="text-4xl font-bold mb-4 font-serif">全面发展</h2>
+                            <p class="text-xl mb-6">丰富多彩的校园生活</p>
+                            <p class="text-lg">我们提供体育、艺术、科技等多元化课外活动，促进学生全面发展，培养团队合作精神和社会责任感。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 轮播图控制 -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-4">
+            <button id="carousel-prev" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="carousel-pause" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+                <i class="fas fa-pause"></i>
+            </button>
+            <button id="carousel-next" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- 轮播图指示器 -->
+        <div class="absolute bottom-10 right-10 flex space-x-2">
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-index="0"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-index="1"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-index="2"></button>
+        </div>
+    </section>
+
+    <!-- 学校历史时间线 -->
+    <section id="history" class="py-20 px-4 bg-gradient-to-b from-white to-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-primary font-serif">百年校史 · 光辉历程</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">泾阳崇实中学自1983年创办以来，始终秉持教育初心，为社会培养了大批优秀人才。</p>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <!-- 时间线 -->
+                <div class="space-y-16">
+                    <!-- 时间线项目1 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="timeline-connector"></div>
+                        <div class="glass-card p-6 rounded-2xl hover-scale">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">1928</div>
+                                <h3 class="text-2xl font-bold text-primary">学校创立</h3>
+                            </div>
+                            <p class="text-gray-700">由著名教育家李文清先生创办，初名"泾阳县立初级中学"，以"崇实求是"为校训，开启了泾阳地区现代中学教育的先河。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间线项目2 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="timeline-connector"></div>
+                        <div class="glass-card p-6 rounded-2xl hover-scale">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">2018</div>
+                                <h3 class="text-2xl font-bold text-primary">更名为泾阳崇实中学</h3>
+                            </div>
+                            <p class="text-gray-700">正式更名为"泾阳崇实中学"，成为完全中学，增设高中部，确立了"崇实、求是、创新、致远"的新校训。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间线项目3 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="timeline-connector"></div>
+                        <div class="glass-card p-6 rounded-2xl hover-scale">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">1988</div>
+                                <h3 class="text-2xl font-bold text-primary">评为省级重点中学</h3>
+                            </div>
+                            <p class="text-gray-700">被评为陕西省重点中学，教学质量和办学水平得到社会广泛认可，成为当地教育的一面旗帜。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间线项目4 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="timeline-connector"></div>
+                        <div class="glass-card p-6 rounded-2xl hover-scale">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">2005</div>
+                                <h3 class="text-2xl font-bold text-primary">新校区建成</h3>
+                            </div>
+                            <p class="text-gray-700">占地300亩的新校区投入使用，配备了现代化的教学楼、实验楼、图书馆和体育设施，办学条件大幅提升。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间线项目5 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="timeline-connector"></div>
+                        <div class="glass-card p-6 rounded-2xl hover-scale">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">2020</div>
+                                <h3 class="text-2xl font-bold text-primary">智慧校园建设</h3>
+                            </div>
+                            <p class="text-gray-700">全面推进智慧校园建设，引入数字化教学平台和AI辅助教育系统，获评"全国信息化教学示范校"。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程体系展示 -->
+    <section id="courses" class="py-20 px-4 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-primary font-serif">多元课程 · 全面发展</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">我们构建了基础课程、拓展课程和特色课程相结合的多元课程体系，满足学生个性化发展需求。</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 初中部课程 -->
+                <div class="glass-card p-8 rounded-2xl hover-scale">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                        <i class="fas fa-book-open text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-primary">初中部课程</h3>
+                    <ul class="space-y-3 text-gray-700 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt-1 mr-3"></i>
+                            <span>国家基础课程：语文、数学、英语等</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt-1 mr-3"></i>
+                            <span>科学探索课程：物理、化学、生物实验</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt-1 mr-3"></i>
+                            <span>人文素养课程：历史、地理、道德与法治</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt-1 mr-3"></i>
+                            <span>艺术修养课程：音乐、美术、书法</span>
+                        </li>
+                    </ul>
+                    <button class="view-course-detail w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors" data-course="初中部">
+                        查看详情
+                    </button>
+                </div>
+                
+                <!-- 高中部课程 -->
+                <div class="glass-card p-8 rounded-2xl hover-scale">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-primary">高中部课程</h3>
+                    <ul class="space-y-3 text-gray-700 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>文理分科课程：文科/理科核心课程</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>学科拓展课程：竞赛辅导、大学先修课</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>研究性学习：课题研究、社会实践</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>生涯规划课程：职业探索、升学指导</span>
+                        </li>
+                    </ul>
+                    <button class="view-course-detail w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors" data-course="高中部">
+                        查看详情
+                    </button>
+                </div>
+                
+                <!-- 特色课程 -->
+                <div class="glass-card p-8 rounded-2xl hover-scale">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                        <i class="fas fa-star text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-primary">特色拓展课程</h3>
+                    <ul class="space-y-3 text-gray-700 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>科技创新：机器人、编程、3D打印</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>传统文化：国学经典、传统工艺</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>体育健康：武术、篮球、羽毛球专项</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt=1 mr-3"></i>
+                            <span>国际理解：第二外语、跨文化交流</span>
+                        </li>
+                    </ul>
+                    <button class="view-course-detail w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors" data-course="特色课程">
+                        查看详情
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 师资介绍 -->
+    <section id="teachers" class="py-20 px-4 bg-gradient-to-b from-white to-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-primary font-serif">优秀师资 · 专业团队</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">我校拥有一支师德高尚、业务精湛、结构合理、充满活力的高素质专业化教师队伍。</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 教师1 -->
+                <div class="glass-card p-6 rounded-2xl hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 rounded-full overflow-hidden mr-4 border-4 border-white shadow-lg">
+                            <img src="https://agent.qianwen.com/mos/1b7e98c688a44ec988f6e7a9c5f6fcdb/d0717c2ef8d039cd65b25ee4767bc2d1" alt="张明教授" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-primary">张明</h3>
+                            <p class="text-gray-600">特级教师 · 语文教研组长</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">陕西省语文特级教师，从教30年，出版教育专著3部，主持省级重点课题2项，获"全国优秀教师"称号。</p>
+                    <button class="view-teacher-detail text-secondary font-medium hover:text-primary transition-colors" data-teacher="张明">
+                        查看履历 <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- 教师2 -->
+                <div class="glass-card p-6 rounded-2xl hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mr-4 border-4 border-white shadow-lg">
+                            <i class="fas fa-user-graduate text-primary text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-primary">李华</h3>
+                            <p class="text-gray-600">高级教师 · 数学教研组长</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">北京大学数学系硕士，奥林匹克数学竞赛优秀教练，培养出5名全国数学竞赛一等奖获得者。</p>
+                    <button class="view-teacher-detail text-secondary font-medium hover:text-primary transition-colors" data-teacher="李华">
+                        查看履历 <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- 教师3 -->
+                <div class="glass-card p-6 rounded-2xl hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mr-4 border-4 border-white shadow-lg">
+                            <i class="fas fa-flask text-primary text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-primary">王芳</h3>
+                            <p class="text-gray-600">高级教师 · 理化生教研组长</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">清华大学化学系博士，省级教学能手，创新实验室负责人，指导学生获全国科技创新大赛金奖。</p>
+                    <button class="view-teacher-detail text-secondary font-medium hover:text-primary transition-colors" data-teacher="王芳">
+                        查看履历 <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-block py-3 px-8 bg-secondary text-white font-medium rounded-lg hover:bg-secondary/90 transition-colors">
+                    了解更多师资信息
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 校园论坛模块 -->
+    <section id="forum" class="py-20 px-4 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-primary font-serif">校园论坛 · 交流互动</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">欢迎师生、家长在此分享学习心得、校园生活感悟，共建积极向上的校园文化社区。</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 发帖区域 -->
+                <div class="lg:col-span-2">
+                    <div class="glass-card p-6 rounded-2xl mb-8">
+                        <h3 class="text-2xl font-bold mb-6 text-primary">发布新帖子</h3>
+                        <form id="post-form">
+                            <div class="mb-6">
+                                <label for="post-author" class="block text-gray-700 mb-2">姓名/昵称</label>
+                                <input type="text" id="post-author" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的姓名或昵称" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="post-title" class="block text-gray-700 mb-2">帖子标题</label>
+                                <input type="text" id="post-title" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入帖子标题" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="post-content" class="block text-gray-700 mb-2">帖子内容</label>
+                                <textarea id="post-content" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请分享您的想法、心得或问题..." required></textarea>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="py-3 px-8 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors flex items-center">
+                                    <i class="fas fa-paper-plane mr-2"></i> 发布帖子
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- 帖子列表 -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-primary">最新帖子</h3>
+                        <div id="posts-container" class="space-y-6">
+                            <!-- 帖子将通过JavaScript动态添加 -->
+                            <div class="forum-post glass-card p-6 rounded-2xl">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-primary">欢迎新同学！</h4>
+                                        <p class="text-gray-600 text-sm">发布者：校学生会 · 2025年9月1日</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="like-btn text-gray-500 hover:text-red-500 transition-colors" data-post="0">
+                                            <i class="fas fa-heart mr-1"></i> <span class="like-count">12</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">欢迎2025 级新同学加入泾阳崇实中学大家庭！祝愿大家在这里度过充实而美好的中学时光，学有所成，健康成长！</p>
+                                <div class="text-sm text-gray-500">
+                                    <i class="fas fa-comments mr-1"></i> 5条回复
+                                </div>
+                            </div>
+                            
+                            <div class="forum-post glass-card p-6 rounded-2xl">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-primary">数学学习方法分享</h4>
+                                        <p class="text-gray-600 text-sm">发布者：高三(2)班李佳琪 · 2024年8月25日</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="like-btn text-gray-500 hover:text-red-500 transition-colors" data-post="1">
+                                            <i class="fas fa-heart mr-1"></i> <span class="like-count">8</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">最近有很多学弟学妹问我数学学习方法，我总结了几点：1.重视基础概念理解；2.建立错题本；3.定期总结归纳；4.保持每天练习。希望对大家有帮助！</p>
+                                <div class="text-sm text-gray-500">
+                                    <i class="fas fa-comments mr-1"></i> 3条回复
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 论坛侧边栏 -->
+                <div>
+                    <div class="glass-card p-6 rounded-2xl mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-primary">论坛规则</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>尊重他人，文明发言</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>禁止发布广告、不实信息</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>鼓励分享学习经验、校园生活</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>教师、家长、学生均可参与</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary">热门话题</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="flex items-center justify-between p-3 rounded-lg hover:bg-white/30 transition-colors">
+                                <span class="font-medium">期中考试复习计划</span>
+                                <span class="text-sm text-gray-500">45讨论</span>
+                            </a>
+                            <a href="#" class="flex items-center justify-between p-3 rounded-lg hover:bg-white/30 transition-colors">
+                                <span class="font-medium">校园艺术节筹备</span>
+                                <span class="text-sm text-gray-500">32讨论</span>
+                            </a>
+                            <a href="#" class="flex items-center justify-between p-3 rounded-lg hover:bg-white/30 transition-colors">
+                                <span class="font-medium">体育节项目报名</span>
+                                <span class="text-sm text-gray-500">28讨论</span>
+                            </a>
+                            <a href="#" class="flex items-center justify-between p-3 rounded-lg hover:bg-white/30 transition-colors">
+                                <span class="font-medium">图书馆新书推荐</span>
+                                <span class="text-sm text-gray-500">22讨论</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻公告滚动条 -->
+    <section id="news" class="py-16 px-4 bg-gradient-to-b from-white to-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-primary font-serif">新闻公告 · 校园动态</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">及时发布学校最新动态、重要通知和活动信息。</p>
+            
+            <!-- 跑马灯滚动条 -->
+            <div class="glass-card p-4 mb-12 overflow-hidden">
+                <div class="flex items-center">
+                    <div class="bg-primary text-white py-2 px-4 rounded-lg font-bold mr-6 whitespace-nowrap">
+                        <i class="fas fa-bullhorn mr-2"></i> 最新通知
+                    </div>
+                    <div id="news-ticker" class="flex-1 overflow-hidden">
+                        <div class="ticker-content whitespace-nowrap">
+                            <span class="text-gray-700 mr-8">2024年秋季运动会将于10月15日-17日举行，请各班做好准备</span>
+                            <span class="text-gray-700 mr-8">图书馆新进图书3000册，欢迎师生借阅</span>
+                            <span class="text-gray-700 mr-8">家长开放日定于10月25日，敬请关注</span>
+                            <span class="text-gray-700">期中考试时间安排已公布，请查看教务处通知</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新闻卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 新闻1 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-scale">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://agent.qianwen.com/mos/1b7e98c688a44ec988f6e7a9c5f6fcdb/aefc10327270a316606f7275ee489043" alt="学生放风筝" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-primary/10 text-primary text-sm font-medium py-1 px-3 rounded-full">校园活动</span>
+                            <span class="text-gray-500 text-sm ml-auto">2024年9月10日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary">秋季运动会圆满落幕</h3>
+                        <p class="text-gray-700 mb-4">我校2024年秋季运动会于9月8日-10日成功举行，共有32个班级、1200余名学生参与，展现了崇实学子朝气蓬勃的精神风貌。</p>
+                        <a href="#" class="text-secondary font-medium hover:text-primary transition-colors">阅读更多 <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 新闻2 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-scale">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://agent.qianwen.com/mos/1b7e98c688a44ec988f6e7a9c5f6fcdb/0e802eccaadb582359147a7f3c6d1509" alt="图书馆内部" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-primary/10 text-primary text-sm font-medium py-1 px-3 rounded-full">设施建设</span>
+                            <span class="text-gray-500 text-sm ml-auto">2024年8月25日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary">智慧图书馆正式开放</h3>
+                        <p class="text-gray-700 mb-4">经过升级改造，我校智慧图书馆正式向师生开放，新增电子阅览区、研讨空间和智能借还系统，藏书量达15万册。</p>
+                        <a href="#" class="text-secondary font-medium hover:text-primary transition-colors">阅读更多 <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 新闻3 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-scale">
+                    <div class="h-48 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
+                            <i class="fas fa-trophy text-white text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-primary/10 text-primary text-sm font-medium py-1 px-3 rounded-full">荣誉表彰</span>
+                            <span class="text-gray-500 text-sm ml-auto">2024年7月15日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary">我校学生在省级竞赛中获佳绩</h3>
+                        <p class="text-gray-700 mb-4">在2024年陕西省中学生学科竞赛中，我校学生荣获数学、物理、化学三个学科的一等奖，共获得12个奖项，创历史最佳成绩。</p>
+                        <a href="#" class="text-secondary font-medium hover:text-primary transition-colors">阅读更多 <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式表单 -->
+    <section id="contact" class="py-20 px-4 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4 text-primary font-serif">联系我们 · 加入我们</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">如果您有任何问题、建议或希望了解招生信息，请通过以下方式与我们联系。</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- 联系信息 -->
+                <div>
+                    <div class="glass-card p-8 rounded-2xl mb-8">
+                        <h3 class="text-2xl font-bold mb-6 text-primary">学校信息</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">学校地址</h4>
+                                    <p class="text-gray-700">陕西省咸阳市泾阳县崇文路128号</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">联系电话</h4>
+                                    <p class="text-gray-700">招生办公室：029-36210303</p>
+                                    <p class="text-gray-700">校长办公室：029-36210303</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">电子邮箱</h4>
+                                    <p class="text-gray-700">招生咨询：3045335075@qq.com</p>
+                                    <p class="text-gray-700">一般咨询：3045335075@qq.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">办公时间</h4>
+                                    <p class="text-gray-700">周一至周五：8:00-17:30</p>
+                                    <p class="text-gray-700">周六：8:00-12:00（仅限招生咨询）</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 社交媒体 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6 text-primary">关注我们</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-weibo"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-qq"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xl hover:bg-primary hover:text-white transition-colors">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- 邮件订阅 -->
+                        <div class="mt-8">
+                            <h4 class="font-bold text-lg mb-4">订阅学校资讯</h4>
+                            <div class="flex">
+                                <input type="email" placeholder="请输入您的电子邮箱" class="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <button class="bg-secondary text-white px-6 rounded-r-lg font-medium hover:bg-secondary/90 transition-colors">
+                                    订阅
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 联系表单 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6 text-primary">发送消息</h3>
+                    <form id="contact-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="contact-name" class="block text-gray-700 mb-2">姓名</label>
+                                <input type="text" id="contact-name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的姓名" required>
+                            </div>
+                            <div>
+                                <label for="contact-phone" class="block text-gray-700 mb-2">联系电话</label>
+                                <input type="tel" id="contact-phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的联系电话" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="contact-email" class="block text-gray-700 mb-2">电子邮箱</label>
+                            <input type="email" id="contact-email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的电子邮箱" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="contact-subject" class="block text-gray-700 mb-2">主题</label>
+                            <select id="contact-subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                <option value="" disabled selected>请选择咨询主题</option>
+                                <option value="admission">招生咨询</option>
+                                <option value="teacher">教师招聘</option>
+                                <option value="suggestion">意见建议</option>
+                                <option value="other">其他事项</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="contact-message" class="block text-gray-700 mb-2">留言内容</label>
+                            <textarea id="contact-message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请详细描述您的问题或建议..." required></textarea>
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <button type="submit" class="py-3 px-8 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors flex items-center">
+                                <i class="fas fa-paper-plane mr-2"></i> 发送消息
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-12 px-4 glass-card-dark text-white">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold font-serif">泾阳崇实中学</h3>
+                    </div>
+                    <p class="text-white/80">百年树人，崇实求真。我们致力于提供优质教育，培养德智体美劳全面发展的社会主义建设者和接班人。</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">快速链接</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <a href="#home" class="text-white/80 hover:text-secondary transition-colors">学校首页</a>
+                        <a href="#courses" class="text-white/80 hover:text-secondary transition-colors">课程体系</a>
+                        <a href="#teachers" class="text-white/80 hover:text-secondary transition-colors">师资团队</a>
+                        <a href="#forum" class="text-white/80 hover:text-secondary transition-colors">校园论坛</a>
+                        <a href="#news" class="text-white/80 hover:text-secondary transition-colors">新闻公告</a>
+                        <a href="#contact" class="text-white/80 hover:text-secondary transition-colors">联系我们</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">校训</h4>
+                    <div class="bg-white/10 p-6 rounded-2xl">
+                        <p class="text-2xl font-bold text-center mb-2 font-serif">崇实 · 求是 · 创新 · 致远</p>
+                        <p class="text-center text-white/80 text-sm">1982年立校至今</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/20 text-center">
+                <p class="text-white/80">© 2026 泾阳崇实中学 版权所有 侵权必究 | 该页面由校方委托丁鹤飞先生制作陕ICP备36892601号</p>
+                <p class="text-white/60 text-sm mt-2">地址：陕西省咸阳市泾阳县崇文路128号 | 电话：029-36210303</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 模态框容器 -->
+    <div id="modal-container" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative glass-card p-8 rounded-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <button id="modal-close" class="absolute top-4 right-4 text-2xl text-gray-600 hover:text-primary transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化轮播图
+            initCarousel();
+            
+            // 初始化导航栏交互
+            initNavigation();
+            
+            // 初始化论坛功能
+            initForum();
+            
+            // 初始化表单提交
+            initForms();
+            
+            // 初始化模态框
+            initModals();
+            
+            // 初始化新闻跑马灯
+            initNewsTicker();
+            
+            // 平滑滚动到锚点
+            initSmoothScroll();
+            
+            // 点赞功能
+            initLikeButtons();
+        });
+        
+        // 轮播图功能
+        let currentSlide = 0;
+        let slideInterval;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let isPlaying = true;
+        
+        function initCarousel() {
+            // 设置轮播图自动播放
+            slideInterval = setInterval(nextSlide, 5000);
+            
+            // 轮播图控制按钮事件
+            document.getElementById('carousel-prev').addEventListener('click', prevSlide);
+            document.getElementById('carousel-next').addEventListener('click', nextSlide);
+            document.getElementById('carousel-pause').addEventListener('click', togglePlay);
+            
+            // 轮播图指示器点击事件
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => goToSlide(index));
+            });
+            
+            // 更新指示器状态
+            updateIndicators();
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlides();
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlides();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlides();
+            resetInterval();
+        }
+        
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                    slide.classList.remove('opacity-0');
+                } else {
+                    slide.classList.remove('active');
+                    slide.classList.add('opacity-0');
+                }
+            });
+            updateIndicators();
+        }
+        
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.remove('bg-white/50');
+                    indicator.classList.add('bg-white');
+                } else {
+                    indicator.classList.remove('bg-white');
+                    indicator.classList.add('bg-white/50');
+                }
+            });
+        }
+        
+        function togglePlay() {
+            const pauseBtn = document.getElementById('carousel-pause');
+            if (isPlaying) {
+                clearInterval(slideInterval);
+                pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                isPlaying = false;
+            } else {
+                slideInterval = setInterval(nextSlide, 5000);
+                pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                isPlaying = true;
+            }
+        }
+        
+        function resetInterval() {
+            clearInterval(slideInterval);
+            if (isPlaying) {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+        }
+        
+        // 导航栏交互
+        function initNavigation() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('animate-fade-in');
+            });
+            
+            // 点击导航链接时关闭移动菜单
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        }
+        
+        // 论坛功能
+        function initForum() {
+            const postForm = document.getElementById('post-form');
+            const postsContainer = document.getElementById('posts-container');
+            
+            // 加载已有的帖子
+            let posts = JSON.parse(localStorage.getItem('chongshi-forum-posts')) || [];
+            
+            // 渲染帖子列表
+            function renderPosts() {
+                // 保留前两个示例帖子
+                const examplePosts = postsContainer.innerHTML;
+                postsContainer.innerHTML = examplePosts;
+                
+                // 添加用户发布的帖子
+                posts.forEach((post, index) => {
+                    const postElement = createPostElement(post, index + 2);
+                    postsContainer.insertBefore(postElement, postsContainer.firstChild);
+                });
+            }
+            
+            // 初始渲染
+            renderPosts();
+            
+            // 表单提交事件
+            postForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const author = document.getElementById('post-author').value;
+                const title = document.getElementById('post-title').value;
+                const content = document.getElementById('post-content').value;
+                
+                if (!author || !title || !content) {
+                    alert('请填写所有字段！');
+                    return;
+                }
+                
+                // 创建新帖子对象
+                const newPost = {
+                    id: Date.now(),
+                    author: author,
+                    title: title,
+                    content: content,
+                    date: new Date().toLocaleDateString('zh-CN'),
+                    likes: 0,
+                    comments: 0
+                };
+                
+                // 添加到帖子数组
+                posts.unshift(newPost);
+                
+                // 保存到本地存储
+                localStorage.setItem('chongshi-forum-posts', JSON.stringify(posts));
+                
+                // 渲染新帖子
+                const postElement = createPostElement(newPost, 2);
+                postsContainer.insertBefore(postElement, postsContainer.firstChild);
+                
+                // 重置表单
+                postForm.reset();
+                
+                // 显示成功消息
+                showNotification('帖子发布成功！', 'success');
+            });
+        }
+        
+        // 创建帖子元素
+        function createPostElement(post, index) {
+            const postElement = document.createElement('div');
+            postElement.className = 'forum-post glass-card p-6 rounded-2xl';
+            postElement.innerHTML = `
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h4 class="text-xl font-bold text-primary">${post.title}</h4>
+                        <p class="text-gray-600 text-sm">发布者：${post.author} · ${post.date}</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="like-btn text-gray-500 hover:text-red-500 transition-colors" data-post="${index}">
+                            <i class="fas fa-heart mr-1"></i> <span class="like-count">${post.likes}</span>
+                        </button>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">${post.content}</p>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-comments mr-1"></i> ${post.comments}条回复
+                </div>
+            `;
+            
+            return postElement;
+        }
+        
+        // 点赞功能
+        function initLikeButtons() {
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.like-btn')) {
+                    const likeBtn = e.target.closest('.like-btn');
+                    const likeCount = likeBtn.querySelector('.like-count');
+                    let count = parseInt(likeCount.textContent);
+                    
+                    // 切换点赞状态
+                    if (likeBtn.classList.contains('liked')) {
+                        likeBtn.classList.remove('liked', 'text-red-500');
+                        likeBtn.classList.add('text-gray-500');
+                        count--;
+                    } else {
+                        likeBtn.classList.add('liked', 'text-red-500');
+                        likeBtn.classList.remove('text-gray-500');
+                        count++;
+                    }
+                    
+                    likeCount.textContent = count;
+                    
+                    // 添加动画效果
+                    likeBtn.querySelector('i').classList.add('animate-pulse');
+                    setTimeout(() => {
+                        likeBtn.querySelector('i').classList.remove('animate-pulse');
+                    }, 300);
+                }
+            });
+        }
+        
+        // 表单提交
+        function initForms() {
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 获取表单数据
+                const name = document.getElementById('contact-name').value;
+                const phone = document.getElementById('contact-phone').value;
+                const email = document.getElementById('contact-email').value;
+                const subject = document.getElementById('contact-subject').value;
+                const message = document.getElementById('contact-message').value;
+                
+                // 简单的验证
+                if (!name || !phone || !email || !subject || !message) {
+                    showNotification('请填写所有字段！', 'error');
+                    return;
+                }
+                
+                // 在实际应用中，这里会发送到服务器
+                // 现在只是模拟成功提交
+                showNotification('消息发送成功！我们会尽快回复您。如长时间未回复你请主动与我联系 3045335075@qq.com', 'success');
+                contactForm.reset();
+            });
+        }
+        
+        // 模态框
+        function initModals() {
+            const modalContainer = document.getElementById('modal-container');
+            const modalClose = document.getElementById('modal-close');
+            const modalContent = document.getElementById('modal-content');
+            
+            // 关闭模态框
+            modalClose.addEventListener('click', closeModal);
+            modalContainer.addEventListener('click', function(e) {
+                if (e.target === modalContainer) {
+                    closeModal();
+                }
+            });
+            
+            // 课程详情按钮
+            document.querySelectorAll('.view-course-detail').forEach(button => {
+                button.addEventListener('click', function() {
+                    const course = this.getAttribute('data-course');
+                    showCourseModal(course);
+                });
+            });
+            
+            // 教师详情按钮
+            document.querySelectorAll('.view-teacher-detail').forEach(button => {
+                button.addEventListener('click', function() {
+                    const teacher = this.getAttribute('data-teacher');
+                    showTeacherModal(teacher);
+                });
+            });
+        }
+        
+        function showModal(content) {
+            const modalContainer = document.getElementById('modal-container');
+            const modalContent = document.getElementById('modal-content');
+            
+            modalContent.innerHTML = content;
+            modalContainer.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modalContainer = document.getElementById('modal-container');
+            modalContainer.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function showCourseModal(course) {
+            let content = '';
+            
+            if (course === '初中部') {
+                content = `
+                    <h2 class="text-3xl font-bold mb-6 text-primary font-serif">初中部课程详情</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">国家基础课程</h3>
+                            <p class="text-gray-700">严格按照国家课程标准，开设语文、数学、英语、道德与法治、历史、地理、物理、化学、生物等学科，夯实学生知识基础。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">科学探索课程</h3>
+                            <p class="text-gray-700">通过实验探究、项目式学习等方式，培养学生的科学素养和创新精神。每周安排2节实验课，每学期完成2个科学探究项目。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">人文素养课程</h3>
+                            <p class="text-gray-700">开设经典诵读、历史探究、地理实践、法治讲堂等特色课程，提升学生的人文素养和社会责任感。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">艺术修养课程</h3>
+                            <p class="text-gray-700">包括音乐欣赏、美术创作、书法练习、戏剧表演等，每个学生需至少选择一门艺术课程，培养审美能力和创造力。</p>
+                        </div>
+                    </div>
+                `;
+            } else if (course === '高中部') {
+                content = `
+                    <h2 class="text-3xl font-bold mb-6 text-primary font-serif">高中部课程详情</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">文理分科课程</h3>
+                            <p class="text-gray-700">高一进行通识教育，高二根据学生兴趣和能力进行文理分科，提供针对性的核心课程，为高考和未来专业发展奠定基础。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">学科拓展课程</h3>
+                            <p class="text-gray-700">针对学有余力的学生，提供竞赛辅导、大学先修课（AP）、学术写作等拓展课程，助力学生冲击顶尖高校。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">研究性学习</h3>
+                            <p class="text-gray-700">每学期完成一个研究课题，涵盖科学实验、社会调查、人文探究等领域，培养学生的问题解决能力和研究能力。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">生涯规划课程</h3>
+                            <p class="text-gray-700">通过职业体验、大学参观、专家讲座、一对一咨询等方式，帮助学生认识自我、探索职业、规划未来。</p>
+                        </div>
+                    </div>
+                `;
+            } else if (course === '特色课程') {
+                content = `
+                    <h2 class="text-3xl font-bold mb-6 text-primary font-serif">特色拓展课程详情</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">科技创新课程</h3>
+                            <p class="text-gray-700">包括机器人设计与编程、3D建模与打印、人工智能基础、无人机操控等，培养学生科技创新能力和工程思维。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">传统文化课程</h3>
+                            <p class="text-gray-700">开设国学经典、书法篆刻、传统工艺（陶艺、剪纸、刺绣）、传统体育（武术、射箭）等课程，传承中华优秀传统文化。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">体育健康课程</h3>
+                            <p class="text-gray-700">除常规体育课外，开设篮球、足球、羽毛球、乒乓球、游泳、武术等专项课程，满足学生个性化体育需求。</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2 text-primary">国际理解课程</h3>
+                            <p class="text-gray-700">开设日语、法语、西班牙语等第二外语课程，以及跨文化沟通、模拟联合国、国际时事研讨等课程，拓展学生国际视野。（该项目在外省开设）</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            showModal(content);
+        }
+        
+        function showTeacherModal(teacher) {
+            let content = '';
+            
+            if (teacher === '张明') {
+                content = `
+                    <div class="flex flex-col md:flex-row items-start gap-8">
+                        <div class="w-full md:w-1/3">
+                            <div class="rounded-2xl overflow-hidden shadow-lg">
+                                <img src="https://agent.qianwen.com/mos/1b7e98c688a44ec988f6e7a9c5f6fcdb/d0717c2ef8d039cd65b25ee4767bc2d1" alt="张明教授" class="w-full h-auto">
+                            </div>
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <h2 class="text-3xl font-bold mb-2 text-primary font-serif">张明 老师</h2>
+                            <p class="text-xl text-gray-600 mb-6">语文特级教师 · 语文教研组长</p>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">教育背景</h3>
+                                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                        <li>陕西师范大学中文系学士</li>
+                                        <li>北京师范大学教育硕士</li>
+                                        <li>华东师范大学访问学者（2018-2019）</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">教学成就</h3>
+                                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                        <li>从教32年，担任班主任26年</li>
+                                        <li>出版教育专著《语文教学的艺术》《经典诵读与人文素养》</li>
+                                        <li>主持省级重点课题"中学语文核心素养培养路径研究"</li>
+                                        <li>获"全国优秀教师"、"陕西省师德标兵"称号</li>
+                                        <li>指导学生获全国作文竞赛一等奖15人次</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2 text-primary">教育理念</h3>
+                                    <p class="text-gray-700 italic">"语文不仅是工具，更是文化的载体、思想的翅膀。我致力于让学生在文字中感受美、在经典中汲取智慧、在表达中成就自我。"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (teacher === '李华') {
+                content = `
+                    <h2 class="text-3xl font-bold mb-6 text-primary font-serif">李华 老师</h2>
+                    <p class="text-xl text-gray-600 mb-6">数学高级教师 · 数学教研组长</p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-primary">教育背景</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>北京大学数学科学学院学士</li>
+                                <li>北京大学数学科学学院硕士</li>
+                                <li>中国科学院数学与系统科学研究院访问学者（2020）</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-primary">教学成就</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>从教18年，专注数学竞赛辅导12年</li>
+                                <li>中国数学奥林匹克竞赛高级教练员</li>
+                                <li>培养5名学生获全国数学奥林匹克竞赛一等奖</li>
+                                <li>32名学生获省级数学竞赛一等奖</li>
+                                <li>发表数学教育论文10篇，其中核心期刊5篇</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-primary">教学特色</h3>
+                            <p class="text-gray-700">李老师擅长启发式教学，注重培养学生的数学思维和问题解决能力。他的课堂生动有趣，善于将抽象的数学概念与生活实际相结合，激发学生的学习兴趣。</p>
+                        </div>
+                    </div>
+                `;
+            } else if (teacher === '王芳') {
+                content = `
+                    <h2 class="text-3xl font-bold mb-6 text-primary font-serif">王芳 老师</h2>
+                    <p class="text-xl text-gray-600 mb-6">化学高级教师 · 理化生教研组长</p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-primary">教育背景</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>清华大学化学系学士</li>
+                                <li>清华大学化学系博士</li>
+                                <li>美国加州大学伯克利分校访问学者（2019-2020）</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-primary">教学成就</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>从教15年，创新实验室负责人</li>
+                                <li>指导学生获全国青少年科技创新大赛金奖2项</li>
+                                <li>获"陕西省教学能手"称号</li>
+                                <li>主持省级课题"中学化学实验教学改革研究"</li>
+                                <li>开发校本课程《趣味化学实验》《生活中的化学》</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-primary">教育理念</h3>
+                            <p class="text-gray-700">"化学是一门充满神奇与创造的科学。我希望能带领学生在实验中探索奥秘，在实践中培养科学精神，让每个学生都能感受化学的魅力，激发创新潜能。"</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            showModal(content);
+        }
+        
+        // 新闻跑马灯
+        function initNewsTicker() {
+            const tickerContent = document.querySelector('.ticker-content');
+            const contentWidth = tickerContent.scrollWidth;
+            const containerWidth = document.getElementById('news-ticker').offsetWidth;
+            
+            if (contentWidth > containerWidth) {
+                let position = 0;
+                const speed = 1; // 像素每帧
+                
+                function animateTicker() {
+                    position -= speed;
+                    
+                    if (position < -contentWidth) {
+                        position = containerWidth;
+                    }
+                    
+                    tickerContent.style.transform = `translateX(${position}px)`;
+                    requestAnimationFrame(animateTicker);
+                }
+                
+                animateTicker();
+            }
+        }
+        
+        // 平滑滚动
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // 显示通知
+        function showNotification(message, type) {
+            // 创建通知元素
+            const notification = document.createElement('div');
+            notification.className = `fixed top-24 right-6 z-50 px-6 py-4 rounded-lg shadow-lg animate-slide-up ${type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} mr-3 text-xl"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // 3秒后移除通知
+            setTimeout(() => {
+                notification.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // 监听滚动，添加导航栏背景效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-card-dark');
+            } else {
+                nav.classList.remove('glass-card-dark');
+            }
+        });
+    </script>
+</body>
+</html>
